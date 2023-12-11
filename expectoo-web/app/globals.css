@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer base {
+    @font-face {
+        font-family: 'Montserrat';
+        src: url('/font/Sacramento-Regular') format('.ttf');
+        /* font-weight: 400; */
+        font-style: normal;
+    }
+}
+
+.animatebg {
+    @apply inline-block relative overflow-hidden hover:before:left-0;
+}
+
+.animatebg::before {
+    @apply content-[""] absolute w-full h-full bg-[#e8238c8a] transition-[left] duration-[0.3s] ease-[ease] z-[-1] -left-full top-0;
+}
+
+
+
+
+.vertical-text{
+    /* writing-mode: vertical-lr; */
+   writing-mode: vertical-lr;
+transform: rotate(180deg)
+}
+
+
+.vertical{
+transform: rotate(180deg);
+writing-mode: vertical-lr;
+}
+
+
+.bw{
+filter: grayscale(100%);
+}
+
+
+/* scroll bar  */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 3px;
+    /* Adjust the height of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(228, 228, 228);
+    border-radius: 10px;
+    height: 10px;
+}
+
+
+/* Define the initial styles for the span */
+.grow-bg {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+/* Define the background transition effect */
+.grow-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #E8238D;
+   
+    transition: left 0.3s ease;
+  
+    z-index: -1;
+   
+}
+
+/* Style the text container */
+.grow-bg p {
+    position: relative;
+    z-index: 1;
+    /* Place the text above the background */
+    color: white;
+    /* Set text color to white */
+    padding: 3px;
+    /* Add padding to improve visibility */
+}
+
+/* Apply the animation on hover */
+.grow-bg:hover::before {
+    left: 0;
+    /* Transition to the right */
+}
+
+
+
+
+.scale-in-ver-bottom {
+    -webkit-animation: scale-in-ver-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-ver-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+.zoom-image {
+    transition: transform 0.3s ease;
+
+}
+
+
+.zoom-image:hover {
+    transform: scale(1.2);
+
+}
+
+
+
+.text-image{
+        font-size: 110px;
+        font-weight: 700;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: url('/expectoobg.svg');
+       /* // font: 700 12px system-ui; */
+        position:'absolute'
+     
+    }
+
+
+    .text-ani{
+        font-size: 100px;
+        text-align: center;
+        font-weight: 900;
+        background-image: url('/expectoobg.svg');
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+
+
+#zoom-out {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+#zoom-out{
+    display: none;
+}
+}
+
+
+.text-shadow {
+    text-shadow: 1px 1px 2px;
+}
+
+
+.cursor-img:hover{
+cursor:url('/img4.jpeg'),auto;
+}
+
+/* flare cursor */
+.flare {
+    position: fixed;
+    border: 2px solid #ffffff2b;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999999 !important;
+    backdrop-filter: blur(1px);
+    background-color: #0000005e;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    cursor: none !important;
+    /* Let's hide the default cursor so it looks way better */
+}
+
+/* We need to remove this custom cursor in mobile devices */
+@media screen and (max-width: 768px) {
+    .flare {
+        width: 0;
+        height: 0;
+        transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+            opacity 0.2s ease-in-out;
+    }
+}
+
+.flare.pointer {
+    opacity: 0 !important;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
